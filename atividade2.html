@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculadora de IMC</title>
+  <style>
+    body {
+      
+      margin: 0;
+      padding: 20px;
+    }
+    
+    h1 {
+      text-align: absolute;
+    }
+    
+    .input-container {
+      display: table-cell;
+      align-items: absolute;
+      margin-bottom: 10px;
+    }
+    
+    .input-container label {
+      flex: 1;
+    }
+    
+    .input-container input {
+      flex: 2;
+      padding: 5px;
+    }
+    
+    #result {
+      text-align: absolute;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+    
+    .normal {
+      color: green;
+    }
+    
+    .alert {
+      color: orange;
+    }
+    
+    .danger {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>Calculadora de IMC</h1>
+  
+  <img src="https://explicae.com.br/app/uploads/avatars/d864db76-1645-4a49-a7c3-457a10dee164-1615915955373.png"><br>
+  
+  <div class="input-container">
+    <label for="weight">Peso (kg):</label>
+    <input type="number" id="weight" step="0.01">
+  </div><br>
+  
+  <div class="input-container">
+    <label for="height">Altura (cm):</label>
+    <input type="number" id="height" step="00.01">
+  </div>
+  
+  <button onclick="calculateBMI()">Calcular IMC</button>
+  
+  <div id="result"></div>
+  
+  <script>
+    function calculateBMI() {
+      var weight = parseFloat(document.getElementById("weight").value);
+      var height = parseFloat(document.getElementById("height").value) / 100; // converter para metros
+      
+      if (weight && height) {
+        var bmi = weight / (height * height);
+        var result = document.getElementById("result");
+        
+        result.innerHTML = "Seu IMC é: " + bmi.toFixed(2);
+        
+        if (bmi < 18.5) {
+          result.className = "danger";
+          result.innerHTML += " - Abaixo do peso";
+        } else if (bmi < 25) {
+          result.className = "normal";
+          result.innerHTML += " - Peso normal";
+        } else if (bmi < 30) {
+          result.className = "alert";
+          result.innerHTML += " - Sobrepeso";
+        } else if (bmi < 35) {
+          result.className = "danger";
+          result.innerHTML += " - Obesidade Grau I";
+        } else if (bmi < 40) {
+          result.className = "danger";
+          result.innerHTML += " - Obesidade Grau II";
+        } else {
+          result.className = "danger";
+          result.innerHTML += " - Obesidade Grau III";
+        }
+      }
+    }
+  </script>
+   Para voltar a página inicial,
+   <a href="index.html">clique aqui</a>
+</body>
+</html>

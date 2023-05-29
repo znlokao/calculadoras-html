@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> appendChild</title>
+</head>
+<body>
+<h1>Objeto Elemento</h1>
+<h2>O método appendChild</h2>
+
+<ul id="myList">
+  <li>Café</li>
+  <li>Chá</li>
+</ul>
+
+<p>Clique em "Anexar" para acrescentar um item ao final da lista:</p>
+
+<input type="text" id="itemText" value="">
+
+<p>Escolha uma cor para o item:</p>
+<input type="radio" id="colorRed" name="color" value="red">
+<label for="colorRed">Vermelho</label><br>
+
+<input type="radio" id="colorGreen" name="color" value="green">
+<label for="colorGreen">Verde</label><br>
+
+<input type="radio" id="colorBlue" name="color" value="blue">
+<label for="colorBlue">Azul</label><br>
+
+<button id="Acrescentar">Anexar</button><br>
+
+<script>
+document.getElementById("Acrescentar").addEventListener("click", addItem);
+
+function addItem() {
+  var itemText = document.getElementById("itemText").value;
+  var color = document.querySelector('input[name="color"]:checked').value;
+
+  var newItem = document.createElement("li");
+  newItem.style.color = color;
+  var textNode = document.createTextNode(itemText);
+  newItem.appendChild(textNode);
+
+  var list = document.getElementById("myList");
+  list.appendChild(newItem);
+}
+</script>
+   Para voltar a página inicial,
+   <a href="index.html">clique aqui</a>
+</body>
+</html>
